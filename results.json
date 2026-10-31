@@ -1,0 +1,534 @@
+{
+  "purpose": "verification only; the candidate zip is not published here",
+  "ran_at": "2026-10-31T14:57:31Z",
+  "run_number": 3,
+  "run_id": "41212306451",
+  "event": "workflow_dispatch",
+  "runner": {
+    "os": "Linux",
+    "release": "Ubuntu 24.04.5 LTS",
+    "image": "ubuntu24"
+  },
+  "environment": {
+    "image": "mcr.microsoft.com/dotnet/sdk:10.0",
+    "pull": "ok",
+    "repo_digests": [
+      "mcr.microsoft.com/dotnet/sdk@sha256:de4fe90a98845d75910b9769662465c84de1a934665c431279d1382b2bddc02b"
+    ],
+    "image_pwsh": "7.6.8",
+    "image_pwsh_dotnet": "10.0.14",
+    "image_dotnet_sdk": "10.0.403",
+    "runner_git": "git version 2.56.0"
+  },
+  "credential": {
+    "kind": "deploy key",
+    "repository": "dependa-defs-verify",
+    "host_key": "fixed in the workflow file"
+  },
+  "trials": [
+    {
+      "name": "force-push-source",
+      "expected": "rejected",
+      "result": "rejected",
+      "detail": "create accepted; remote: error: GH013: Repository rule violations found for refs/heads/source.          ! [remote rejected] 62115a6fb891cbb7fbf6902b1a81c76c80433b2c -> source (push declined due to repository rule violations) error: failed to push some refs to 'github.com:sumikkolab/dependa-defs-verify.git' "
+    },
+    {
+      "name": "delete-source",
+      "expected": "rejected",
+      "result": "rejected",
+      "detail": "create accepted; remote: error: GH013: Repository rule violations found for refs/heads/source.          ! [remote rejected] source (push declined due to repository rule violations) error: failed to push some refs to 'github.com:sumikkolab/dependa-defs-verify.git' "
+    },
+    {
+      "name": "delete-unprotected-branch",
+      "expected": "accepted",
+      "result": "accepted",
+      "detail": "create accepted; "
+    },
+    {
+      "name": "delete-unprotected-tag",
+      "expected": "accepted",
+      "result": "accepted",
+      "detail": "create accepted; "
+    },
+    {
+      "name": "add-workflow-file",
+      "expected": "rejected",
+      "result": "rejected",
+      "detail": " ! [remote rejected] HEAD -> main (refusing to allow an OAuth App to create or update workflow `.github/workflows/probe-3.yml` without `workflow` scope) error: failed to push some refs to 'github.com:sumikkolab/dependa-defs-verify.git' "
+    },
+    {
+      "name": "push-to-builder-repo",
+      "expected": "rejected",
+      "result": "rejected",
+      "detail": "ERROR: Repository not found. fatal: Could not read from remote repository. "
+    }
+  ],
+  "all_as_expected": true,
+  "signature": {
+    "algorithm": "ECDSA P-256",
+    "hash": "SHA-256",
+    "encoding": "DER",
+    "key_id": "0bacb9727c632a3b",
+    "manifest": "test-pack/manifest.json",
+    "signature_file": "test-pack/manifest.json.sig",
+    "public_key": "test-pack/public-key.pem",
+    "manifest_sha256": "40aafef088a1caf4463e21aa53dc98220cbf690bad175c2b4cd9d050c36e8459",
+    "verified_on_runner": true
+  },
+  "build": {
+    "status": "built",
+    "reason": "",
+    "runtime": {
+      "pwsh": "7.6.8",
+      "dotnet": "10.0.14"
+    },
+    "dll_sha256": [
+      "1b16828db4dd1079b314a6862148d59b9e82df32626c9451c234bc89867aef7f  ./Dependa.Core.dll",
+      "fbb1e96e0dd03e14b7e1e2e09db6fa3c34ea4ed5b4a7e404290096a60917c32c  ./Dependa.Cvss.dll",
+      "7828270805e8f354e8e1b58b8e1633363c47e74caf431eb069adf53027ba4e80  ./Dependa.Definitions.dll",
+      "26cc98a0258557c939dd44dcbdf7501f8157110bb981d55cfa0442ebc1c3388a  ./Dependa.Infrastructure.dll",
+      "0a974670c969f62ecfc8d8015f2844fc8b1357a3acbe64c994bce97f1fe9d279  ./Dependa.LicenseExpr.dll",
+      "9e11d4d4d32726014fea9ce5ae55d19c4a20c6301ced7a0f300b06c99630c29b  ./Dependa.Versioning.dll"
+    ],
+    "measure": [
+      {
+        "ecosystem": "npm",
+        "bytes": 219693946,
+        "entries": 230993,
+        "prefixes": {
+          "EEF": 1,
+          "GHSA": 8071,
+          "GSD": 1,
+          "MAL": 222920
+        }
+      },
+      {
+        "ecosystem": "NuGet",
+        "bytes": 2680919,
+        "entries": 1967,
+        "prefixes": {
+          "GHSA": 1185,
+          "MAL": 782
+        }
+      },
+      {
+        "ecosystem": "PyPI",
+        "bytes": 37601256,
+        "entries": 26775,
+        "prefixes": {
+          "GHSA": 6808,
+          "MAL": 11972,
+          "OSV": 12,
+          "PYSEC": 7983
+        }
+      }
+    ],
+    "container": {
+      "exit": 0,
+      "unsafe_entries_under_w": false,
+      "log": []
+    },
+    "restore": {
+      "exit": 0,
+      "log": [
+        "  Determining projects to restore...",
+        "  Restored /w/src/src/Dependa.Definitions/Dependa.Definitions.csproj (in 1.9 sec).",
+        "  Restored /w/src/src/Dependa.Cvss/Dependa.Cvss.csproj (in 1.92 sec).",
+        "  Restored /w/src/src/Dependa.Core/Dependa.Core.csproj (in 4 ms).",
+        "  Restored /w/src/src/Dependa.Versioning/Dependa.Versioning.csproj (in 5 ms).",
+        "  Restored /w/src/src/Dependa.LicenseExpr/Dependa.LicenseExpr.csproj (in 4 ms).",
+        "  Restored /w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj (in 963 ms)."
+      ]
+    },
+    "compile": {
+      "exit": 0,
+      "log": [
+        "  Dependa.LicenseExpr -> /w/src/src/Dependa.LicenseExpr/bin/Release/net10.0/Dependa.LicenseExpr.dll",
+        "/w/src/src/Dependa.Core/Models/AiGovernance/AiGovernanceReport.cs(38,21): warning CA1711: Rename type name UnknownTokenCollection so that it does not end in 'Collection' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1711) [/w/src/src/Dependa.Core/Dependa.Core.csproj]",
+        "/w/src/src/Dependa.Core/Models/PolicyException.cs(7,21): warning CA1711: Rename type name PolicyException so that it does not end in 'Exception' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1711) [/w/src/src/Dependa.Core/Dependa.Core.csproj]",
+        "/w/src/src/Dependa.Core/Interfaces/IReviewStatusStore.cs(9,26): warning CA1716: Rename virtual/interface member IReviewStatusStore.Get(string) so that it no longer conflicts with the reserved language keyword 'Get'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1716) [/w/src/src/Dependa.Core/Dependa.Core.csproj]",
+        "/w/src/src/Dependa.Core/Interfaces/IPolicyTemplateConverter.cs(16,45): warning CA1716: In virtual/interface member IPolicyTemplateConverter.Convert(PolicyTemplate), rename parameter template so that it no longer conflicts with the reserved language keyword 'template'. Using a reserved keyword as the name of a parameter on a virtual/interface member makes it harder for consumers in other languages to override/implement the member. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1716) [/w/src/src/Dependa.Core/Dependa.Core.csproj]",
+        "/w/src/src/Dependa.Core/Models/ScanSnapshot.cs(80,41): warning CA1826: Do not use Enumerable methods on indexable collections. Instead use the collection directly. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1826) [/w/src/src/Dependa.Core/Dependa.Core.csproj]",
+        "  Dependa.Core -> /w/src/src/Dependa.Core/bin/Release/net10.0/Dependa.Core.dll",
+        "  Dependa.Definitions -> /w/src/src/Dependa.Definitions/bin/Release/net10.0/Dependa.Definitions.dll",
+        "  Dependa.Cvss -> /w/src/src/Dependa.Cvss/bin/Release/net10.0/Dependa.Cvss.dll",
+        "  Dependa.Versioning -> /w/src/src/Dependa.Versioning/bin/Release/net10.0/Dependa.Versioning.dll",
+        "/w/src/src/Dependa.Infrastructure/Database/DashboardAggregator.cs(79,56): warning CA1305: The behavior of 'DateTime.Parse(string)' could vary based on the current user's locale settings. Replace this call in 'DashboardAggregator.RecentProjects([int])' with a call to 'DateTime.Parse(string, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Database/ComponentReviewRepository.cs(115,16): warning CA1305: The behavior of 'Convert.ToInt32(object)' could vary based on the current user's locale settings. Replace this call in 'ComponentReviewRepository.CountByReview(string)' with a call to 'Convert.ToInt32(object, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Database/DashboardAggregator.cs(98,16): warning CA1305: The behavior of 'Convert.ToInt32(object)' could vary based on the current user's locale settings. Replace this call in 'DashboardAggregator.ScalarInt(string)' with a call to 'Convert.ToInt32(object, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/DataPaths.cs(176,96): warning CA1838: Avoid 'StringBuilder' parameters for P/Invokes. Consider using a character buffer instead. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1838) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Database/ComponentReviewRepository.cs(131,22): warning CA1305: The behavior of 'DateTime.Parse(string)' could vary based on the current user's locale settings. Replace this call in 'ComponentReviewRepository.Map(SqliteDataReader)' with a call to 'DateTime.Parse(string, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Database/PolicyRepository.cs(60,16): warning CA1305: The behavior of 'Convert.ToInt32(object)' could vary based on the current user's locale settings. Replace this call in 'PolicyRepository.Count()' with a call to 'Convert.ToInt32(object, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Database/ProjectRepository.cs(38,16): warning CA1305: The behavior of 'Convert.ToInt32(object)' could vary based on the current user's locale settings. Replace this call in 'ProjectRepository.Count()' with a call to 'Convert.ToInt32(object, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Database/ProjectRepository.cs(49,16): warning CA1305: The behavior of 'Convert.ToInt64(object)' could vary based on the current user's locale settings. Replace this call in 'ProjectRepository.NameExists(string, [string])' with a call to 'Convert.ToInt64(object, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Database/ProjectRepository.cs(104,21): warning CA1305: The behavior of 'DateTime.Parse(string)' could vary based on the current user's locale settings. Replace this call in 'ProjectRepository.MapProject(SqliteDataReader)' with a call to 'DateTime.Parse(string, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Database/ProjectRepository.cs(105,21): warning CA1305: The behavior of 'DateTime.Parse(string)' could vary based on the current user's locale settings. Replace this call in 'ProjectRepository.MapProject(SqliteDataReader)' with a call to 'DateTime.Parse(string, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Database/ProjectRepository.cs(106,88): warning CA1305: The behavior of 'DateTime.Parse(string)' could vary based on the current user's locale settings. Replace this call in 'ProjectRepository.MapProject(SqliteDataReader)' with a call to 'DateTime.Parse(string, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Database/ReviewRepository.cs(112,16): warning CA1305: The behavior of 'Convert.ToInt32(object)' could vary based on the current user's locale settings. Replace this call in 'ReviewRepository.CountByProject(string)' with a call to 'Convert.ToInt32(object, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Database/ReviewRepository.cs(127,26): warning CA1305: The behavior of 'DateTime.Parse(string)' could vary based on the current user's locale settings. Replace this call in 'ReviewRepository.MapReview(SqliteDataReader)' with a call to 'DateTime.Parse(string, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Database/ReviewRepository.cs(152,36): warning CA1305: The behavior of 'DateTime.Parse(string)' could vary based on the current user's locale settings. Replace this call in 'ReviewRepository.MapReview(SqliteDataReader)' with a call to 'DateTime.Parse(string, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/VersionComparer.cs(70,13): warning CA1806: ParseVersion calls TryParse but does not explicitly check whether the conversion succeeded. Either use the return value in a conditional statement or verify that the call site expects that the out argument will be set to the default value when the conversion fails. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1806) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(63,17): warning CA1873: Evaluation of this argument may be expensive and unnecessary if logging is disabled (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1873) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(76,13): warning CA1873: Evaluation of this argument may be expensive and unnecessary if logging is disabled (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1873) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(42,13): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogWarning(ILogger, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(60,40): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogWarning(ILogger, Exception?, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(63,17): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogInformation(ILogger, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(76,13): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogInformation(ILogger, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(87,13): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogError(ILogger, Exception?, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/VulnerabilityAnalysisBuilder.cs(66,31): warning CA1305: The behavior of 'string.Format(string, params ReadOnlySpan<object>)' could vary based on the current user's locale settings. Replace this call in 'VulnerabilityAnalysisBuilder.Build(ScanResult, string, string)' with a call to 'string.Format(IFormatProvider, string, params ReadOnlySpan<object>)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/VulnerabilityAnalysisBuilder.cs(71,23): warning CA1305: The behavior of 'string.Format(string, object)' could vary based on the current user's locale settings. Replace this call in 'VulnerabilityAnalysisBuilder.Build(ScanResult, string, string)' with a call to 'string.Format(IFormatProvider, string, params object[])'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/ScanStages/VulnerabilityStage.cs(38,9): warning CA1873: Evaluation of this argument may be expensive and unnecessary if logging is disabled (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1873) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/ScanStages/VulnerabilityStage.cs(38,9): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogInformation(ILogger, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/ScanStages/VulnerabilityStage.cs(44,26): warning CA1305: The behavior of 'string.Format(string, object)' could vary based on the current user's locale settings. Replace this call in 'VulnerabilityStage.MatchAsync(AcquiredEcosystem, bool, CancellationToken)' with a call to 'string.Format(IFormatProvider, string, params object[])'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/ScanStages/VulnerabilityStage.cs(54,26): warning CA1305: The behavior of 'string.Format(string, object)' could vary based on the current user's locale settings. Replace this call in 'VulnerabilityStage.MatchAsync(AcquiredEcosystem, bool, CancellationToken)' with a call to 'string.Format(IFormatProvider, string, params object[])'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(119,17): warning CA1873: Evaluation of this argument may be expensive and unnecessary if logging is disabled (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1873) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(130,13): warning CA1873: Evaluation of this argument may be expensive and unnecessary if logging is disabled (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1873) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(102,13): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogWarning(ILogger, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(119,17): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogInformation(ILogger, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(130,13): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogInformation(ILogger, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/Store/StorePurchaseService.cs(141,13): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogError(ILogger, Exception?, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/ScanStages/VulnerabilityStage.cs(80,13): warning CA1873: Evaluation of this argument may be expensive and unnecessary if logging is disabled (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1873) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/ScanStages/VulnerabilityStage.cs(145,21): warning CA1873: Evaluation of this argument may be expensive and unnecessary if logging is disabled (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1873) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/VulnerabilityAnalysisBuilder.cs(173,13): warning CA1310: The behavior of 'string.StartsWith(string)' could vary based on the current user's locale settings. Replace this call in 'Dependa.Infrastructure.Services.VulnerabilityAnalysisBuilder.DetermineSourceType(string)' with a call to 'string.StartsWith(string, System.StringComparison)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1310) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/VulnerabilityAnalysisBuilder.cs(174,13): warning CA1310: The behavior of 'string.StartsWith(string)' could vary based on the current user's locale settings. Replace this call in 'Dependa.Infrastructure.Services.VulnerabilityAnalysisBuilder.DetermineSourceType(string)' with a call to 'string.StartsWith(string, System.StringComparison)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1310) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/VulnerabilityAnalysisBuilder.cs(175,13): warning CA1310: The behavior of 'string.StartsWith(string)' could vary based on the current user's locale settings. Replace this call in 'Dependa.Infrastructure.Services.VulnerabilityAnalysisBuilder.DetermineSourceType(string)' with a call to 'string.StartsWith(string, System.StringComparison)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1310) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/ScanStages/VulnerabilityStage.cs(80,13): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogInformation(ILogger, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/ScanStages/VulnerabilityStage.cs(145,21): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogInformation(ILogger, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/ScanStages/VulnerabilityStage.cs(164,13): warning CA1848: For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogWarning(ILogger, Exception?, string?, params object?[])' (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1848) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/ScanStages/VulnerabilityStage.cs(157,30): warning CA1305: The behavior of 'string.Format(string, object, object)' could vary based on the current user's locale settings. Replace this call in 'VulnerabilityStage.LookupOnlineAsync(string, IReadOnlyList<DependencyEntry>, IReadOnlyList<VulnerabilityAdvisory>, List<VulnerabilityMatch>, IReadOnlyList<NotAssessedEntry>, List<string>, CancellationToken)' with a call to 'string.Format(IFormatProvider, string, params object[])'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/ScanStages/VulnerabilityStage.cs(159,30): warning CA1305: The behavior of 'string.Format(string, object)' could vary based on the current user's locale settings. Replace this call in 'VulnerabilityStage.LookupOnlineAsync(string, IReadOnlyList<DependencyEntry>, IReadOnlyList<VulnerabilityAdvisory>, List<VulnerabilityMatch>, IReadOnlyList<NotAssessedEntry>, List<string>, CancellationToken)' with a call to 'string.Format(IFormatProvider, string, params object[])'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/ScanStages/VulnerabilityStage.cs(163,26): warning CA1305: The behavior of 'string.Format(string, object)' could vary based on the current user's locale settings. Replace this call in 'VulnerabilityStage.LookupOnlineAsync(string, IReadOnlyList<DependencyEntry>, IReadOnlyList<VulnerabilityAdvisory>, List<VulnerabilityMatch>, IReadOnlyList<NotAssessedEntry>, List<string>, CancellationToken)' with a call to 'string.Format(IFormatProvider, string, params object[])'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomReviewReportGenerator.cs(140,34): warning CA1861: Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1861) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomReviewReportGenerator.cs(221,9): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomReviewReportGenerator.GenerateHtml(SbomReviewResult, IReadOnlyDictionary<string, ComponentReviewEntry>, AiGovernanceReport, IReadOnlyList<RiskAnalysisResult>, string, [bool])' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomReviewReportGenerator.cs(225,9): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomReviewReportGenerator.GenerateHtml(SbomReviewResult, IReadOnlyDictionary<string, ComponentReviewEntry>, AiGovernanceReport, IReadOnlyList<RiskAnalysisResult>, string, [bool])' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomReviewReportGenerator.cs(238,13): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomReviewReportGenerator.GenerateHtml(SbomReviewResult, IReadOnlyDictionary<string, ComponentReviewEntry>, AiGovernanceReport, IReadOnlyList<RiskAnalysisResult>, string, [bool])' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomReviewReportGenerator.cs(239,13): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomReviewReportGenerator.GenerateHtml(SbomReviewResult, IReadOnlyDictionary<string, ComponentReviewEntry>, AiGovernanceReport, IReadOnlyList<RiskAnalysisResult>, string, [bool])' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomReviewReportGenerator.cs(240,13): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomReviewReportGenerator.GenerateHtml(SbomReviewResult, IReadOnlyDictionary<string, ComponentReviewEntry>, AiGovernanceReport, IReadOnlyList<RiskAnalysisResult>, string, [bool])' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomReviewReportGenerator.cs(241,13): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomReviewReportGenerator.GenerateHtml(SbomReviewResult, IReadOnlyDictionary<string, ComponentReviewEntry>, AiGovernanceReport, IReadOnlyList<RiskAnalysisResult>, string, [bool])' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomReviewReportGenerator.cs(242,13): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomReviewReportGenerator.GenerateHtml(SbomReviewResult, IReadOnlyDictionary<string, ComponentReviewEntry>, AiGovernanceReport, IReadOnlyList<RiskAnalysisResult>, string, [bool])' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomReviewReportGenerator.cs(243,13): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomReviewReportGenerator.GenerateHtml(SbomReviewResult, IReadOnlyDictionary<string, ComponentReviewEntry>, AiGovernanceReport, IReadOnlyList<RiskAnalysisResult>, string, [bool])' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(31,9): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.GenerateHtml(SbomDiffResult)' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(35,9): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.GenerateHtml(SbomDiffResult)' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(56,19): warning CA1305: The behavior of 'DateTime.ToString(string)' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.AppendSummaryPage(StringBuilder, SbomDiffResult)' with a call to 'DateTime.ToString(string, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(61,9): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.AppendSummaryPage(StringBuilder, SbomDiffResult)' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(74,24): warning CA1305: The behavior of 'int.ToString()' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.AppendSummaryPage(StringBuilder, SbomDiffResult)' with a call to 'int.ToString(IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(76,24): warning CA1305: The behavior of 'int.ToString()' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.AppendSummaryPage(StringBuilder, SbomDiffResult)' with a call to 'int.ToString(IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(78,24): warning CA1305: The behavior of 'int.ToString()' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.AppendSummaryPage(StringBuilder, SbomDiffResult)' with a call to 'int.ToString(IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(80,24): warning CA1305: The behavior of 'int.ToString()' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.AppendSummaryPage(StringBuilder, SbomDiffResult)' with a call to 'int.ToString(IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(89,13): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.AppendSummaryPage(StringBuilder, SbomDiffResult)' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(95,17): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.AppendSummaryPage(StringBuilder, SbomDiffResult)' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(95,67): warning CA1305: The behavior of 'string.Format(string, object)' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.AppendSummaryPage(StringBuilder, SbomDiffResult)' with a call to 'string.Format(IFormatProvider, string, params object[])'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(99,17): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.AppendSummaryPage(StringBuilder, SbomDiffResult)' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(99,67): warning CA1305: The behavior of 'string.Format(string, object)' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.AppendSummaryPage(StringBuilder, SbomDiffResult)' with a call to 'string.Format(IFormatProvider, string, params object[])'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomDiffReportGenerator.cs(102,9): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomDiffReportGenerator.AppendSummaryPage(StringBuilder, SbomDiffResult)' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomReviewReportGenerator.cs(266,19): warning CA1305: The behavior of 'DateTime.ToString(string)' could vary based on the current user's locale settings. Replace this call in 'SbomReviewReportGenerator.AppendCoverPage(StringBuilder, SbomReviewResult)' with a call to 'DateTime.ToString(string, IFormatProvider)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]",
+        "/w/src/src/Dependa.Infrastructure/Services/SbomReviewReportGenerator.cs(271,9): warning CA1305: The behavior of 'StringBuilder.AppendLine(ref StringBuilder.AppendInterpolatedStringHandler)' could vary based on the current user's locale settings. Replace this call in 'SbomReviewReportGenerator.AppendCoverPage(StringBuilder, SbomReviewResult)' with a call to 'StringBuilder.AppendLine(IFormatProvider, ref StringBuilder.AppendInterpolatedStringHandler)'. (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305) [/w/src/src/Dependa.Infrastructure/Dependa.Infrastructure.csproj]"
+      ]
+    },
+    "builder": {
+      "exit": 0,
+      "log": [
+        "成功: True",
+        "読んだ JSON ファイル: 259735",
+        "助言 python: 8161",
+        "助言 nuget: 5272",
+        "助言 node.js: 8242",
+        "除外 出典の対象外: 235688",
+        "  ID の接頭辞 EEF- : 1",
+        "  ID の接頭辞 GSD- : 1",
+        "  ID の接頭辞 MAL- : 235674",
+        "  ID の接頭辞 OSV- : 12",
+        "別名で統合した件数: 7054",
+        "除外 取り下げ: 1054",
+        "除外 対応するパッケージが無い: 0",
+        "除外 判定できない範囲: 265",
+        "除外 不正な文字: 0",
+        "読めない: 0",
+        "警告: 265 entr(ies) could not be decided: 範囲の events が空、または範囲が無い",
+        "出力: advisories/python-advisories.json",
+        "出力: advisories/nuget-advisories.json",
+        "出力: advisories/node.js-advisories.json",
+        "出力: advisories/_bundled-meta.json",
+        "出力: licenses/python-package-licenses.json",
+        "出力: licenses/nuget-package-licenses.json",
+        "出力: licenses/node.js-package-licenses.json",
+        "出力: licenses/license-definitions.json",
+        "出力: policies/policy-rules.json",
+        "出力: ai-governance/ai-sdk-catalog.json",
+        "出力: ai-governance/env-key-patterns.json",
+        "出力: ai-governance/region-aliases.json",
+        "出力: ai-governance/provider-aliases.json",
+        "出力: ai-governance/terraform-ai-resources.json",
+        "出力: ai-governance/azure-ai-resources.json",
+        "出力: ai-governance/retention-checkpoints.json",
+        "出力: ai-governance/dangerous-permissions.json",
+        "出力: ai-governance/region-catalog.json",
+        "出力: definitions-manifest.json",
+        "マニフェストの自己検証: Valid"
+      ]
+    },
+    "packer": {
+      "exit": 0,
+      "log": [
+        "成功: True",
+        "zip の中身: definitions-manifest.json",
+        "zip の中身: advisories/python-advisories.json",
+        "zip の中身: advisories/nuget-advisories.json",
+        "zip の中身: advisories/node.js-advisories.json",
+        "SHA-256: 05C3E560A92D93B27178EB7C12519286F03DD27FB906D41BE3973089815B8AC7"
+      ]
+    },
+    "gate": {
+      "exit": 1,
+      "result": {
+        "schemaVersion": 1,
+        "verdict": "doNotPublish",
+        "evaluatedAt": "2026-10-31T14:56:35Z",
+        "candidateSha256": "05C3E560A92D93B27178EB7C12519286F03DD27FB906D41BE3973089815B8AC7",
+        "firstPublish": true,
+        "items": [
+          {
+            "item": "origin",
+            "result": "undecidable",
+            "reasons": [
+              "OriginInputUnavailable"
+            ],
+            "details": []
+          },
+          {
+            "item": "zipShape",
+            "result": "pass",
+            "reasons": [],
+            "details": []
+          },
+          {
+            "item": "manifest",
+            "result": "pass",
+            "reasons": [],
+            "details": []
+          },
+          {
+            "item": "version",
+            "result": "fail",
+            "reasons": [
+              "FirstPublishNotAutomatic"
+            ],
+            "details": []
+          },
+          {
+            "item": "count",
+            "result": "fail",
+            "reasons": [
+              "FirstPublishNotAutomatic"
+            ],
+            "details": []
+          },
+          {
+            "item": "removedIds",
+            "result": "fail",
+            "reasons": [
+              "FirstPublishNotAutomatic"
+            ],
+            "details": []
+          },
+          {
+            "item": "rangeAndFix",
+            "result": "fail",
+            "reasons": [
+              "FirstPublishNotAutomatic"
+            ],
+            "details": []
+          },
+          {
+            "item": "severityLowered",
+            "result": "fail",
+            "reasons": [
+              "FirstPublishNotAutomatic"
+            ],
+            "details": []
+          },
+          {
+            "item": "idsAndRecords",
+            "result": "pass",
+            "reasons": [],
+            "details": []
+          },
+          {
+            "item": "text",
+            "result": "fail",
+            "reasons": [
+              "Html",
+              "Script",
+              "Instruction",
+              "CharacterNotAllowed"
+            ],
+            "details": [
+              "Html: python/cairosvg/GHSA-c3jg-qh8m-j3h2/title",
+              "Html: python/cairosvg/GHSA-f38f-5xpm-9r7c/title",
+              "Script: python/djust/GHSA-4mf4-73j6-mvrw/title",
+              "Html: python/filelock/GHSA-m462-7rxw-wvpg/title",
+              "Html: python/fpdf2/GHSA-wqw6-wpr3-45rh/title",
+              "Html: python/jupyterlab/GHSA-4952-p58q-6crx/title",
+              "Html: python/justhtml/GHSA-5vp3-3cg6-2rq3/title",
+              "Script: python/kiwitcms/GHSA-473p-56xx-vg67/title",
+              "Html: python/label-studio/GHSA-6xv9-957j-qfhg/title",
+              "Html: python/lemur/GHSA-4h97-p9wq-chqj/title",
+              "Html: python/lemur/GHSA-x3vf-mgxj-7785/title",
+              "Script: python/lxml-html-clean/GHSA-4jhm-jv67-739f/title",
+              "Html: python/lxml-html-clean/GHSA-xvp8-3mhv-424c/title",
+              "Html: python/markdownify/GHSA-7mpr-5m44-h73r/title",
+              "Script: python/mistune/GHSA-qfrw-5rxm-mhh2/title",
+              "Html: python/mobsf/GHSA-ccc3-fvfx-mw3v/title",
+              "Html: python/notebook/GHSA-4952-p58q-6crx/title",
+              "Instruction: python/open-webui/GHSA-h2cw-7qw9-56xr/title",
+              "Instruction: python/open-webui/GHSA-jh9g-8jqw-m2qx/title",
+              "Html: python/pyload-ng/GHSA-j92p-c242-7hfx/title",
+              "Html: python/pymdown-extensions/GHSA-9xwg-3r6f-jcx2/title",
+              "Html: python/python-statemachine/GHSA-v4jc-pm6r-3vj8/title",
+              "CharacterNotAllowed: python/vllm/GHSA-vc6m-hm49-g9qg/title",
+              "Html: nuget/Magick.NET-Q16-AnyCPU/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-AnyCPU/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q16-HDRI-AnyCPU/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-HDRI-AnyCPU/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q16-HDRI-OpenMP-arm64/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-HDRI-OpenMP-arm64/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q16-HDRI-OpenMP-x64/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-HDRI-OpenMP-x64/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q16-HDRI-arm64/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-HDRI-arm64/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q16-HDRI-x64/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-HDRI-x64/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q16-HDRI-x86/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-HDRI-x86/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q16-OpenMP-arm64/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-OpenMP-arm64/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q16-OpenMP-x64/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-OpenMP-x64/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q16-OpenMP-x86/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-OpenMP-x86/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q16-arm64/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-arm64/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q16-x64/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-x64/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q16-x86/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q16-x86/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q8-AnyCPU/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q8-AnyCPU/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q8-OpenMP-arm64/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q8-OpenMP-arm64/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q8-OpenMP-x64/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q8-OpenMP-x64/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q8-arm64/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q8-arm64/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q8-x64/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q8-x64/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Magick.NET-Q8-x86/GHSA-5vx3-wx4q-6cj8/title",
+              "Html: nuget/Magick.NET-Q8-x86/GHSA-w8mw-frc6-r7m8/title",
+              "Html: nuget/Scriban/GHSA-q6rr-fm2g-g5x8/title",
+              "Html: nuget/Scriban.Signed/GHSA-q6rr-fm2g-g5x8/title",
+              "Script: node.js/@a2ui/web_core/GHSA-72qq-p3r5-f7wq/title",
+              "Html: node.js/@angular/platform-server/GHSA-gxx4-3xcv-f8qx/title",
+              "Html: node.js/@angular/platform-server/GHSA-j3r3-mxqp-r2p4/title",
+              "Html: node.js/@angular/platform-server/GHSA-v3p8-whq6-r5jg/title",
+              "Html: node.js/@haxtheweb/haxcms-nodejs/GHSA-2m6p-hm3w-6jm3/title",
+              "Html: node.js/@haxtheweb/haxcms-nodejs/GHSA-jh3h-rpxg-fr36/title",
+              "Html: node.js/@haxtheweb/iframe-loader/GHSA-jh3h-rpxg-fr36/title",
+              "Html: node.js/@haxtheweb/video-player/GHSA-2m6p-hm3w-6jm3/title",
+              "Html: node.js/@haxtheweb/video-player/GHSA-jh3h-rpxg-fr36/title",
+              "Html: node.js/@hey-api/openapi-ts/GHSA-hhx9-57xq-r5rw/title",
+              "Script: node.js/@highcharts/dashboards/GHSA-6hgp-fmhr-mrg4/title",
+              "Html: node.js/@highcharts/grid-lite/GHSA-6g3c-p4fg-xv47/title",
+              "Html: node.js/@highcharts/grid-pro/GHSA-6g3c-p4fg-xv47/title",
+              "Script: node.js/@highcharts/grid-pro/GHSA-6hgp-fmhr-mrg4/title",
+              "Script: node.js/@novu/js/GHSA-8gr3-5j6f-25gp/title",
+              "Script: node.js/@nuxtjs/mdc/GHSA-mxm6-v9r6-r94c/title",
+              "Script: node.js/@opentelemetry/propagator-jaeger/GHSA-45rx-2jwx-cxfr/title",
+              "Script: node.js/@paperclipai/ui/GHSA-fpw4-p57j-hqmq/title",
+              "Html: node.js/@quasar/app-vite/GHSA-r5mf-4r5x-q78f/title",
+              "Html: node.js/@quasar/render-ssr-error/GHSA-r5mf-4r5x-q78f/title",
+              "Script: node.js/@sentry/nextjs/GHSA-mchm-gjx6-7h55/title",
+              "Html: node.js/@stablelib/ed25519/GHSA-x3ff-w252-2g7j/title",
+              "Script: node.js/@udecode/plate-link/GHSA-4882-hxpr-hrvm/title",
+              "Html: node.js/angular/GHSA-qwqh-hm9m-p5hr/title",
+              "Html: node.js/astro/GHSA-98hj-9722-w3j8/title",
+              "Html: node.js/astro/GHSA-j687-52p2-xcff/title",
+              "Script: node.js/better-auth/GHSA-86j7-9j95-vpqj/title",
+              "Instruction: node.js/codewhale/GHSA-62f5-cp2p-vq95/title",
+              "CharacterNotAllowed: node.js/codewhale/GHSA-6v2g-fpxh-pmmh/title",
+              "Instruction: node.js/deepseek-tui/GHSA-62f5-cp2p-vq95/title",
+              "CharacterNotAllowed: node.js/deepseek-tui/GHSA-6v2g-fpxh-pmmh/title",
+              "Html: node.js/dompurify/GHSA-gvmj-g25r-r7wr/title",
+              "Html: node.js/dompurify/GHSA-rp9w-3fw7-7cwq/title",
+              "Html: node.js/electron/GHSA-9qh4-3jw8-366w/title",
+              "Html: node.js/happy-dom/GHSA-96g7-g7g9-jxw8/title",
+              "Script: node.js/highcharts/GHSA-5793-x2q3-c3q7/title",
+              "Script: node.js/highcharts/GHSA-mw4f-gj5x-6xr4/title",
+              "Script: node.js/i18nextify/GHSA-6457-mxpq-4fqq/title",
+              "Html: node.js/jodit/GHSA-45qg-252v-3f7p/title",
+              "Script: node.js/jodit/GHSA-j839-gqq4-gf9j/title",
+              "Html: node.js/joplin/GHSA-hff8-hjwv-j9q7/title",
+              "Html: node.js/kysely/GHSA-wmrf-hv6w-mr66/title",
+              "Html: node.js/n8n/GHSA-qgpw-8g46-w95v/title",
+              "Html: node.js/nuxt/GHSA-934w-87qh-qr26/title",
+              "Script: node.js/nuxt/GHSA-934w-87qh-qr26/title",
+              "Html: node.js/nuxt/GHSA-jjm6-p2m9-9w4x/title",
+              "Script: node.js/nuxt/GHSA-jjm6-p2m9-9w4x/title",
+              "Html: node.js/nuxt/GHSA-m3q2-p4fw-w38m/title",
+              "Instruction: node.js/openclaw/GHSA-782p-5fr5-7fj8/title",
+              "Html: node.js/openclaw/GHSA-ww6v-v748-x7g9/title",
+              "Html: node.js/postcss/GHSA-qx2v-qp2m-jg93/title",
+              "Html: node.js/psitransfer/GHSA-533q-w4g6-5586/title",
+              "Html: node.js/ra-ui-materialui/GHSA-5jcr-82fh-339v/title",
+              "Html: node.js/react-admin/GHSA-5jcr-82fh-339v/title",
+              "Script: node.js/react-router/GHSA-8646-j5j9-6r62/title",
+              "Html: node.js/react-router/GHSA-wrjc-x8rr-h8h6/title",
+              "Script: node.js/sanitize-html/GHSA-374f-7chj-9948/title",
+              "Script: node.js/sanitize-html/GHSA-cv27-6wvh-8x7j/title",
+              "Html: node.js/sanitize-html/GHSA-jxwj-j7wr-gfrw/title",
+              "Script: node.js/sanitize-html/GHSA-vccv-cmxp-4j9h/title",
+              "Html: node.js/sanitize-html/GHSA-x3q4-9hxx-gx8m/title",
+              "Html: node.js/serialize-javascript/GHSA-gfhx-hw2g-v5hg/title",
+              "Script: node.js/serialize-javascript/GHSA-gfhx-hw2g-v5hg/title",
+              "Html: node.js/serialize-javascript/GHSA-m5mm-p8h7-m29v/title",
+              "Script: node.js/serialize-javascript/GHSA-m5mm-p8h7-m29v/title",
+              "Html: node.js/svelte/GHSA-9rmh-mm8f-r9h6/title",
+              "Html: node.js/svelte/GHSA-h7h7-mm68-gmrc/title",
+              "Html: node.js/svelte/GHSA-m56q-vw4c-c2cp/title",
+              "Script: node.js/trix/GHSA-j386-3444-qgwg/title"
+            ]
+          },
+          {
+            "item": "sources",
+            "result": "undecidable",
+            "reasons": [
+              "SiteAttributionsUnavailable"
+            ],
+            "details": []
+          },
+          {
+            "item": "sha256",
+            "result": "undecidable",
+            "reasons": [
+              "ExpectedSha256Unavailable"
+            ],
+            "details": []
+          }
+        ]
+      },
+      "stderr": []
+    },
+    "zip": {
+      "published": false,
+      "saved": false,
+      "bytes": 1141123,
+      "sha256": "05c3e560a92d93b27178eb7c12519286f03dd27fb906d41be3973089815b8ac7",
+      "entry_count": 4,
+      "entries": [
+        "definitions-manifest.json",
+        "advisories/python-advisories.json",
+        "advisories/nuget-advisories.json",
+        "advisories/node.js-advisories.json"
+      ]
+    }
+  }
+}
